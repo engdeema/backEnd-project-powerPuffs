@@ -1,3 +1,16 @@
-const mongoose = require("mongoose");
-const RecipesSchema = new mongoose.Schema({});
-module.exports = mongoose.model("Recipes", RecipesSchema);
+// const mongoose = require("mongoose");
+// const { Schema, model } = require("mongoose");
+// const RecipesSchema = new mongoose.Schema({
+//   name: String,
+//   // slug: String,
+//   image: { type: String },
+//   ingredients: [
+//     {
+//       // to link them
+//       type: Schema.Types.ObjectId,
+//       // اسم المودل
+//       ref: "Ingredients",
+//     },
+//   ],
+// });
+// module.exports = mongoose.model("Recipes", RecipesSchema);
