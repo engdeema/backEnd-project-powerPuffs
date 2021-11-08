@@ -29,7 +29,7 @@ app.use(cors());
 app.use(errorHandler);
 
 // routes
-app.use("/?", categoriesRoutes);
+app.use("/api/categories", categoriesRoutes);
 // app.use("/?", ingredientsRoutes);
 // app.use("/?", recipesRoutes);
-app.use("/apis", userRoutes);
+app.use("/api", userRoutes);

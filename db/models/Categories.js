@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-const { Schema, model } = require("mongoose");
+// const { Schema, model } = require("mongoose");
 // const mongooseSlugPlugin = require("mongoose-slug-plugin");
 
 const CategoriesSchema = new mongoose.Schema({
   name: String,
   // slug: String,
-  image: { type: String },
+  image: String,
   // recipes: [
   //   {
   //     // to link them
