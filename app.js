@@ -12,9 +12,9 @@ const passport = require("passport");
 const { localStrategy, jwtStrategy } = require("./middleware/passport");
 const errorHandler = require("./middleware/errorHandler");
 
-const connectDb = require("./db/database");
+const connectDB = require("./db/database");
 // calling should be before "listen" function
-connectDb();
+connectDB();
 
 app.use(passport.initialize());
 passport.use(localStrategy);
