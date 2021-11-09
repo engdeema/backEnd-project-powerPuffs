@@ -1,5 +1,6 @@
 const Categories = require("../../db/models/Categories");
 
+// REVIEW: I believe this is supposed to be the fetchCAtegory function and categoriesListFetch is what fetches all categories
 exports.fetchCategories = async (req, res, next) => {
   try {
     const category = await Categories.find();

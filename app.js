@@ -19,7 +19,7 @@ connectDB();
 app.use(passport.initialize());
 passport.use(localStrategy);
 passport.use(jwtStrategy);
-
+// REVIEW: Move the port and listen to the end of the page
 //bind the app with port 8000
 const PORT = 8080;
 app.listen(PORT, () => console.log(`Application running on localhost:${PORT}`));
