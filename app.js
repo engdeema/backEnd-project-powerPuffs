@@ -6,7 +6,7 @@ const app = express();
 const cors = require("cors");
 const categoriesRoutes = require("./apis/categories/categories.routes");
 // const ingredientsRoutes = require("./apis/ingredients/ingredients.routes");
-// const recipesRoutes = require("./apis/recipes/recipes.routes");
+const recipesRoutes = require("./apis/recipes/recipes.routes");
 const userRoutes = require("./apis/users/users.routes");
 const passport = require("passport");
 const { localStrategy, jwtStrategy } = require("./middleware/passport");
@@ -27,9 +27,9 @@ passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 // routes
-app.use("/api/CategoryList", categoriesRoutes);
+app.use("/api/categories", categoriesRoutes);
 // app.use("/?", ingredientsRoutes);
-// app.use("/?", recipesRoutes);
+app.use("/api/recipes", recipesRoutes);
 app.use("/api", userRoutes);
 
 //bind the app with port 8000

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Schema, model } = require("mongoose");
+
 const IngredientsSchema = new mongoose.Schema({
   name: String,
   // slug: String,

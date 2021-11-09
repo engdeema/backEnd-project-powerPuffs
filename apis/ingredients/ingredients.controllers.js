@@ -1,4 +1,4 @@
-// const Ingredients = require("../../db/models/Ingredients");
+// const Ingredients = require("../../db/models/Ingredient");
 
 // exports.fetchingredients = async (req, res, next) => {
 //   try {

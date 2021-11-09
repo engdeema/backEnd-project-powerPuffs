@@ -1,5 +1,5 @@
 const express = require("express");
-const { signup, signin, logout } = require("./users.controllers");
+const { signup, signin } = require("./users.controllers");
 const passport = require("passport");
 
 // Create a mini express application

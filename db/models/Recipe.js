@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Schema, model } = require("mongoose");
+
 const RecipesSchema = new mongoose.Schema({
   name: String,
   //   // slug: String,
@@ -7,7 +7,7 @@ const RecipesSchema = new mongoose.Schema({
 
   categories: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Categories",
+    ref: "Category",
   },
   // ingredients: [
   //   {

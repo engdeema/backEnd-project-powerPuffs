@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Schema, model } = require("mongoose");
+
 // const mongooseSlugPlugin = require("mongoose-slug-plugin");
 
 const CategoriesSchema = new mongoose.Schema({
@@ -9,9 +9,9 @@ const CategoriesSchema = new mongoose.Schema({
   recipes: [
     {
       // to link them
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       // اسم المودل
-      ref: "Recipes",
+      ref: "Recipe",
     },
   ],
 
