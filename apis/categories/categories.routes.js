@@ -1,8 +1,12 @@
 const express = require("express");
-const { fetchcategory } = require("./categories.controllers");
+const {
+  fetchCategories,
+  createCategories,
+} = require("./categories.controllers");
 
 // Create a mini express application
 const router = express.Router();
 
-router.get("/", fetchcategory);
+router.get("/", fetchCategories);
+router.post("/", createCategories);
 module.exports = router;
