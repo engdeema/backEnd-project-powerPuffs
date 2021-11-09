@@ -22,6 +22,9 @@ exports.fetchCategories = async (req, res, next) => {
 
 exports.createCategories = async (req, res, next) => {
   try {
+    if (req.file) {
+      req.body.image = `${req.protocol}://${req.get("host")}/${req.file.path}`;
+    }
     const newCategory = await Categories.create(req.body);
     return res.status(201).json(newCategory);
   } catch (error) {
