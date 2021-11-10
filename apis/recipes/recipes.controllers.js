@@ -8,6 +8,17 @@ exports.fetchRecipe = async (recipeId, next) => {
     next(error);
   }
 };
+
+// exports.fetchCategories = async (req, res, next) => {
+//   try {
+//     const category = await Category.find();
+//     // .populate("recipes");
+//     return res.status(200).json(category);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
 exports.recipeListFetch = async (req, res, next) => {
   try {
     //populate :نفس سبلنق المودل نبي نعبيه
@@ -16,7 +27,4 @@ exports.recipeListFetch = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-
-  exports.productDetailFetch = async (req, res, next) =>
-    res.status(200).json(req.product);
 };

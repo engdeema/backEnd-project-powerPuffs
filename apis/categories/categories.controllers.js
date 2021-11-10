@@ -11,16 +11,14 @@ exports.fetchCategories = async (req, res, next) => {
   }
 };
 
-// exports.categoriesListFetch = async (req, res, next) => {
-//   try {
-//     //هذا اللي عليه البوبيوليت انقريدينت ،، داخل المودل كاتيجوري
-//     const categories = await Category.find().populate("recipes");
-//     return res.json(categories);
-//     console.log(categories);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+exports.fetchCategory = async (categoryId, next) => {
+  try {
+    const category = await Category.findById(categoryId);
+    return category;
+  } catch (error) {
+    next(error);
+  }
+};
 
 exports.createCategories = async (req, res, next) => {
   try {
@@ -44,7 +42,7 @@ exports.recipeCreate = async (req, res, next) => {
     }
     req.body.category = req.params.categoryId;
     const newRecipe = await Recipe.create(req.body);
-    await Category.findByIdAndUpdate(req.shop, {
+    await Category.findByIdAndUpdate(req.category, {
       $push: { recipes: newRecipe._id },
     });
     return res.status(201).json(newRecipe);

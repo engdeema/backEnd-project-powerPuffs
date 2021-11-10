@@ -6,6 +6,7 @@ const {
   fetchCategories,
   createCategories,
   recipeCreate,
+  fetchCategory,
 } = require("./categories.controllers");
 
 // Create a mini express application
@@ -27,7 +28,7 @@ router.post(
 );
 
 router.param("categoryId", async (req, res, next, categoryId) => {
-  const category = await fetchCategories(categoryId, next);
+  const category = await fetchCategory(categoryId, next);
   if (category) {
     req.category = category;
     next();
