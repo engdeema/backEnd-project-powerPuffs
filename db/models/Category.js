@@ -14,7 +14,7 @@ const CategoriesSchema = new mongoose.Schema(
         // to link them
         type: mongoose.Schema.Types.ObjectId,
         // اسم المودل
-        ref: "Recipe",
+        ref: "Recipes",
       },
     ],
 

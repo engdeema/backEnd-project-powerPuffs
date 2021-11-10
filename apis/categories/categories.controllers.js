@@ -3,8 +3,7 @@ const Recipe = require("../../db/models/Recipe");
 
 exports.fetchCategories = async (req, res, next) => {
   try {
-    const category = await Category.find();
-    // .populate("recipes");
+    const category = await Category.find().populate("recipes");
     return res.status(200).json(category);
   } catch (error) {
     next(error);
