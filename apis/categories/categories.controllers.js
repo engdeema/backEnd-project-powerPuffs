@@ -1,13 +1,12 @@
 const Category = require("../../db/models/Category");
 const Recipe = require("../../db/models/Recipe");
 
-exports.fetchCategories = async (categoryId, next) => {
+exports.fetchCategories = async (req, res, next) => {
   try {
-    const category = await Category.findById(categoryId);
+    const category = await Category.find();
     // .populate("recipes");
-    return category;
+    return res.status(200).json(category);
   } catch (error) {
-    ç;
     next(error);
   }
 };
