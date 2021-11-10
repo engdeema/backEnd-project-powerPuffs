@@ -1,12 +1,13 @@
 const Category = require("../../db/models/Category");
 const Recipe = require("../../db/models/Recipe");
 
-exports.fetchCategories = async (req, res, next) => {
+exports.fetchCategories = async (categoryId, next) => {
   try {
-    const category = await Category.find();
+    const category = await Category.findById(categoryId);
     // .populate("recipes");
-    return res.status(200).json(category);
+    return category;
   } catch (error) {
+    ç;
     next(error);
   }
 };
@@ -24,10 +25,13 @@ exports.fetchCategories = async (req, res, next) => {
 
 exports.createCategories = async (req, res, next) => {
   try {
+    //i called the recipe from the model and give it an Id
+
+    req.body.recipe = req.params.recipeId;
     if (req.file) {
       req.body.image = `${req.protocol}://${req.get("host")}/${req.file.path}`;
     }
-    const newCategory = await Categories.create(req.body);
+    const newCategory = await Category.create(req.body);
     return res.status(201).json(newCategory);
   } catch (error) {
     next(error);
@@ -41,7 +45,7 @@ exports.recipeCreate = async (req, res, next) => {
     }
     req.body.category = req.params.categoryId;
     const newRecipe = await Recipe.create(req.body);
-    await Categories.findByIdAndUpdate(req.shop, {
+    await Category.findByIdAndUpdate(req.shop, {
       $push: { recipes: newRecipe._id },
     });
     return res.status(201).json(newRecipe);

@@ -1,4 +1,7 @@
 const express = require("express");
+const passport = require("passport");
+const upload = require("../../middleware/multer");
+
 const {
   fetchCategories,
   createCategories,
@@ -9,16 +12,28 @@ const {
 const router = express.Router();
 
 router.get("/", fetchCategories);
-router.post("/", createCategories);
-// router.param("categoryId", async (req, res, next, categoryId) => {
-//   const category = await fetchRecipes(categoryId, next);
-//   if (category) {
-//     req.category = category;
-//     next();
-//   } else {
-//     next({ status: 404, message: "Shop Not Found!" });
-//   }
-// });
+router.post(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  upload.single("image"),
+  createCategories
+);
 
-router.post("/:categoryId/recipes", recipeCreate);
+router.post(
+  "/:categoryId/recepies",
+  passport.authenticate("jwt", { session: false }),
+  upload.single("image"),
+  recipeCreate
+);
+
+router.param("categoryId", async (req, res, next, categoryId) => {
+  const category = await fetchCategories(categoryId, next);
+  if (category) {
+    req.category = category;
+    next();
+  } else {
+    next({ status: 404, message: "Category Not Found!" });
+  }
+});
+
 module.exports = router;

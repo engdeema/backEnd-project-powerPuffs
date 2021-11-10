@@ -1,18 +1,19 @@
 const express = require("express");
-const { recipeListFetch, fetchRecipes } = require("./recipes.controllers");
+const { recipeListFetch, fetchRecipe } = require("./recipes.controllers");
+const upload = require("../../middleware/multer");
 
 // Create a mini express application
 const router = express.Router();
 
 router.get("/", recipeListFetch);
-// router.param("categoryId", async (req, res, next, categoryId) => {
-//   const category = await fetchRecipes(categoryId, next);
-//   if (category) {
-//     req.category = category;
-//     next();
-//   } else {
-//     next({ status: 404, message: "Shop Not Found!" });
-//   }
-// });
+router.param("recipeId", async (req, res, next, recipeId) => {
+  const recipe = await fetchRecipe(recipeId, next);
+  if (recipe) {
+    req.recipe = recipe;
+    next();
+  } else {
+    next({ status: 404, message: "Recipe Not Found!" });
+  }
+});
 
 module.exports = router;

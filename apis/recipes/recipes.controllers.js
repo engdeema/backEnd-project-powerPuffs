@@ -1,13 +1,13 @@
 const Recipe = require("../../db/models/Recipe");
 
-// exports.fetchRecipes = async (recipeId, next) => {
-//   try {
-//     const recipes = await Recipe.findById(recipeId);
-//     return recipes;
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+exports.fetchRecipe = async (recipeId, next) => {
+  try {
+    const recipes = await Recipe.findById(recipeId);
+    return recipes;
+  } catch (error) {
+    next(error);
+  }
+};
 exports.recipeListFetch = async (req, res, next) => {
   try {
     //populate :نفس سبلنق المودل نبي نعبيه
@@ -16,4 +16,7 @@ exports.recipeListFetch = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+
+  exports.productDetailFetch = async (req, res, next) =>
+    res.status(200).json(req.product);
 };
